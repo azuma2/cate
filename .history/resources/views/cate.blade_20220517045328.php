@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('\resources\views\reset.css') }}" >
-    <title>@yield('title')</title>
-    <style>
+<style>
     body {
       font-size:16px;
       margin: 5px;
@@ -107,9 +99,8 @@ ul{
     .content {
       margin:10px; 
     }
-    </style>
-  </head>
-  <body>
+</style>
+<body>
   <header>
     <div class="head">
       <ul>
@@ -118,29 +109,33 @@ ul{
       </ul>
     </div>
   </header>
+
+          <!--  カテゴリープルダウン -->
+      <div class="form-group">
+        <select class="form-control" id="cate_id" name="cate_id">
+            @foreach ($cates as $cate)
+                <option value="{{ $cate->cate_id }}">{{ $cate->content }}</option>
+            @endforeach
+        </select>
+      </div>
+
+
+
+
+
   <div class="container">
     <div class="card">
-      <h2 class="title">Todo List</h2>
+      <h2 class="title">カテゴリー追加</h2>
             <div class="todo">
               @if ($errors->has('content'))
                   <tr>
-                    <th>TODOが入力されておりません</th>
+                    <th>ERROR</th>
                   <td>
                   {{$errors->first('content')}} 
                 </td>
             </tr>
           @endif
-
-
-          <!--  カテゴリープルダウン -->
-        <select class="form-control" id="cate_id" name="cate_id">
-            @foreach ($items as $cate)
-                <option value="{{ $cate->cate_id }}">{{ $cate->content }}</option>
-            @endforeach
-        </select>
-
-
-        <form action="/todo/create" method="post">
+        <form action="/cate/create" method="post">
             @csrf
           <input type="text" class="input-add" name="content">
           <input class="button" type="submit" value="追加" />
@@ -149,10 +144,10 @@ ul{
         <table>
             @csrf
           <tr>
-            <th>Todo</th>
-            <th>カテゴリー</th>
-            <th>更新</th>
-            <th>削除</th>
+            <th></th>
+            <th>カテゴリー一覧</th>
+            <th></th>
+            <th></th>
           </tr>
           
                     <tr>
@@ -162,7 +157,7 @@ ul{
               
             </td>
 
-            <form action="/todo/update" method="post">
+            <form action="/cate/update" method="post">
               @csrf
               <td>
                 <input type="text" class="input-update" value="{{$item->content}}" name="content" />
@@ -173,7 +168,7 @@ ul{
               </td>
             </form>
             <td>
-              <form action="/todo/delete" method="post" >
+              <form action="/cate/delete" method="post" >
                     @csrf
                 <input  type="hidden" name="id" value="{{$item->id}}" >
                 <input class="button" type="submit" value="削除" >

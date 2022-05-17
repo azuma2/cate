@@ -22,7 +22,7 @@ class CateController extends Controller
         $this->cate = new Cate();
         $cates = Cate::all();
         $cates = DB::select('select * from cates');
-        return view('index', ['cates' => $cates]);
+        return view('cate', ['cates' => $cates]);
     }
 
     public function create(Request $request)

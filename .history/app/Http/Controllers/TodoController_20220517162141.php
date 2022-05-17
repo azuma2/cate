@@ -46,10 +46,4 @@ class TodoController extends Controller
 
 
 
-        public function index2()
-    {
-        $items = Cate::all();
-        $items = DB::select('select * from cates');
-        return view('cate', ['cates' => $cates]);
-    }
 }

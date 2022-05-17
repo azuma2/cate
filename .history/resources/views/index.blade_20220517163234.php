@@ -132,13 +132,6 @@ ul{
           @endif
 
 
-          <!--  カテゴリープルダウン -->
-        <select class="form-control" id="cate_id" name="cate_id">
-            @foreach ($items as $cate)
-                <option value="{{ $cate->cate_id }}">{{ $cate->content }}</option>
-            @endforeach
-        </select>
-
 
         <form action="/todo/create" method="post">
             @csrf

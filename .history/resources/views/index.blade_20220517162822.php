@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('\resources\views\layouts\reset.css') }}" >
+    <link rel="stylesheet" href="{{ asset('\resources\views\reset.css') }}" >
     <title>@yield('title')</title>
     <style>
     body {
@@ -12,7 +12,40 @@
       margin: 5px;
       background-color: #2d197c;
     }
-    
+
+
+header{
+  padding-right:50px;
+  padding-left:50px;
+  padding-top:20px;
+  position: sticky;
+  left: 0;
+  top: 0;
+  background: #fff;
+}
+.head {
+  justify-content: space-between;
+  display: flex;
+  font-weight: bolder;
+  position: sticky;
+  bottom: 0;
+}
+
+.head1{
+  padding: 10px;
+  margin: 10px;
+}
+
+.head2{
+  padding: 10px;
+  margin: 10px;
+}
+
+ul{
+  list-style: none;
+  margin-top: -8px;
+}
+
     td {
       padding: 5px 10px;
       text-align: center;
@@ -20,7 +53,7 @@
 
     .narabe{
       display:flex;
-        flex-flow: column;
+      flex-flow: column;
     }
 
     .button {
@@ -64,11 +97,12 @@
     transform: translate(-50%, -50%);
     border-radius: 10px;
 }
-    h1 {
-      font-size:32px;
+    h2 {
+      font-size:28px;
       color:white;
       text-shadow:1px 0 5px #289ADC;
-      margin-left: 1px
+      margin-left: 1px;
+      margin: 0;
     }
     .content {
       margin:10px; 
@@ -76,33 +110,47 @@
     </style>
   </head>
   <body>
+  <header>
+    <div class="head">
+      <ul>
+        <li class="head1"><a href="{{ url('/') }}">TODO</a></li>
+        <li class="head2"><a href="{{ url('/cate') }}">カテゴリー一覧</a></li>
+      </ul>
+    </div>
+  </header>
   <div class="container">
     <div class="card">
-      <h1 class="title">Todo List</h1>
+      <h2 class="title">Todo List</h2>
             <div class="todo">
               @if ($errors->has('content'))
                   <tr>
-                    <th>ERROR</th>
+                    <th>TODOが入力されておりません</th>
                   <td>
                   {{$errors->first('content')}} 
                 </td>
             </tr>
           @endif
 
+          <!--  カテゴリープルダウン -->
+        <select class="form-control" id="cate_id" name="cate_id">
+            @foreach ($s as $cate)
+                <option value="{{ $cate->cate_id }}">{{ $cate->content }}</option>
+            @endforeach
+        </select>
 
- 
+
+
         <form action="/todo/create" method="post">
             @csrf
-          <input type="text" class="input-add" name="content" />
+          <input type="text" class="input-add" name="content">
           <input class="button" type="submit" value="追加" />
         </form>
-          @csrf
           <div class="narabe">
         <table>
             @csrf
           <tr>
-            <th>作成日</th>
-            <th>タスク名</th>
+            <th>Todo</th>
+            <th>カテゴリー</th>
             <th>更新</th>
             <th>削除</th>
           </tr>
@@ -134,7 +182,7 @@
             </div>
           </tr>
           @endforeach
-                  </table>
+        </table>
       </div>
     </div>
   </div>

@@ -17,12 +17,12 @@ class CateController extends Controller
         return view('cate', ['cates' => $cates]);
     }
 
-    public function index2()
+    public function index()
     {
         $this->cate = new Cate();
         $cates = Cate::all();
         $cates = DB::select('select * from cates');
-        return view('index', ['cates' => $cates]);
+        return view('cate', ['cates' => $cates]);
     }
 
     public function create(Request $request)

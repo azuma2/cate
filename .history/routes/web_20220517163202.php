@@ -6,7 +6,7 @@ use App\Http\Controllers\CateController;
 
 
 Route::get('/', [TodoController::class, 'index']);
-Route::get('/', [TodoController::class, 'index2']);
+Route::get('/', [TodoController::class, 'index']);
 Route::get('/cate', [CateController::class, 'index']);
 Route::get('/cate', [CateController::class, 'index2']);
 Route::post('/todo/create', [TodoController::class, 'create']);

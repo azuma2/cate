@@ -17,14 +17,8 @@ class CateController extends Controller
         return view('cate', ['cates' => $cates]);
     }
 
-    public function index2()
-    {
-        $this->cate = new Cate();
-        $cates = Cate::all();
-        $cates = DB::select('select * from cates');
-        return view('index', ['cates' => $cates]);
-    }
 
+    
     public function create(Request $request)
     {
         $param = ['content' => $request->content,];

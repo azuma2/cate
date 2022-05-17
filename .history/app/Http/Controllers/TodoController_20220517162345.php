@@ -13,7 +13,7 @@ class TodoController extends Controller
     {
         $items = Todo::all();
         $items = DB::select('select * from todos');
-        return view('index', ['items' => $items]);
+        return view('index', ['items' => $items,'cates' => $cates]);
     }
 
     public function create(Request $request)
@@ -48,8 +48,8 @@ class TodoController extends Controller
 
         public function index2()
     {
-        $items = Cate::all();
-        $items = DB::select('select * from cates');
-        return view('cate', ['cates' => $cates]);
+        $items = Todo::all();
+        $items = DB::select('select * from todos');
+        return view('cate', ['items' => $items]);
     }
 }
