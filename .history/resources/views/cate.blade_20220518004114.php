@@ -10,32 +10,27 @@ header{
   padding-right:50px;
   padding-left:50px;
   padding-top:20px;
+  position: sticky;
   left: 0;
   top: 0;
   background: #fff;
-
 }
 .head {
+  justify-content: space-between;
+  display: flex;
   font-weight: bolder;
   position: sticky;
   bottom: 0;
 }
 
-.head0{
-    display: flex;
-    justify-content: space-between;
-}
-
 .head1{
   padding: 10px;
   margin: 10px;
-  margin-left:100px;
 }
 
 .head2{
   padding: 10px;
   margin: 10px;
-  margin-right:100px;
 }
 
 ul{
@@ -112,7 +107,7 @@ ul{
 <body>
   <header>
     <div class="head">
-      <ul class="head0">
+      <ul>
         <li class="head1"><a href="{{ url('/') }}">TODO</a></li>
         <li class="head2"><a href="{{ url('/cate') }}">カテゴリー一覧</a></li>
       </ul>

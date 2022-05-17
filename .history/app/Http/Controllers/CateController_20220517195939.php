@@ -20,10 +20,10 @@ class CateController extends Controller
     public function create(Request $request)
     {
         $param = ['content' => $request->content,];
-        
+        $cates = $this->cate->get();
         $this->validate($request, Cate::$rules);
         DB::insert('insert into cates (content) values (:content)', $param);
-        return view('cate');
+        return view('cate.create', compact('cates'));
     }
 
     public function update(Request $request)
@@ -32,7 +32,7 @@ class CateController extends Controller
             'id' => $request->id,
             'content' => $request->content,
         ];
-        $items = $this->item->get();
+        $cates = $this->cate->get();
         $this->validate($request, Cate::$rules);
         DB::update('update cates set content =:content where id =:id', $param);
         return redirect('/cate');

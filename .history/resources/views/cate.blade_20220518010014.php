@@ -112,7 +112,7 @@ ul{
 <body>
   <header>
     <div class="head">
-      <ul class="head0">
+      <ul class="head">
         <li class="head1"><a href="{{ url('/') }}">TODO</a></li>
         <li class="head2"><a href="{{ url('/cate') }}">カテゴリー一覧</a></li>
       </ul>

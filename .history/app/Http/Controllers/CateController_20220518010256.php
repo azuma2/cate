@@ -32,7 +32,7 @@ class CateController extends Controller
             'id' => $request->id,
             'content' => $request->content,
         ];
-        $items = $this->item->get();
+        $items = $this->cate->get();
         $this->validate($request, Cate::$rules);
         DB::update('update cates set content =:content where id =:id', $param);
         return redirect('/cate');
