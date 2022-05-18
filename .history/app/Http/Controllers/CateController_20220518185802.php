@@ -11,7 +11,7 @@ class CateController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Todo::all();
+        
         $cates = Cate::all();
        return view('cate', ['items' => $items, 'cates' => $cates]);
     }
